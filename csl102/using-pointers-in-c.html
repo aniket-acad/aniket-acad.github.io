@@ -13,11 +13,11 @@
 
 .doc-embed {
   padding: 0;
-  border: 1px solid #D2D3D6;
+  border: 1px solid #45474B;
   border-radius: 3px;
   margin-bottom: 8px;
 
-  color: #45474B;
+  color: #D2D3D6;
 
   .doc-embed-wrapper {
     display: flex;
@@ -37,7 +37,7 @@
     .threadline {
       flex: 1 1 auto;
       width: 1px;
-      background: #EDEDEE;
+      background: #45474B;
       transition: 0.2s
       display: block;
       margin: auto;
@@ -45,7 +45,7 @@
 
     &:hover .threadline {
       width: 1px;
-      background: #2C2D30
+      background: #FFF
     }
   }
 
@@ -717,7 +717,7 @@ hr {
 <hr>
 <p><strong>What are pointers?</strong></p>
 <p>To answer that question, we must first understand what is an <em><strong>address</strong></em> of a variable. As mentioned above, any kind of data (char, int, float etc.) is stored in the main memory that is byte-addressed. An address is a numeric value that is typically expressed in hexadecimal format, which locates the value of given variable in the main memory. In 'C' code the ampersand (&#x26;) sign is appended before a variable to extract its address.</p>
-<p>A pointer is block of memory that can hold an address of a variable. The size of this block of memory is either 32 bits (4 bytes) or 64 bits (8 bytes) depending on the architecture of the system. In 'C' code, a pointer is represented using a variable with a special asterisk symbol '*'. For example: </p>
+<p>A pointer is block of memory that can hold an address of a variable. The size of this block of memory is either 32 bits (4 bytes) or 64 bits (8 bytes) depending on the architecture of the system. In 'C' code, a pointer is represented using a variable with a special asterisk symbol '*'. The unary operator asterisk is called <em>indirection</em> of <em>dereferencing</em> operator. For example: </p>
 <pre class="cm-s-default CodeMirror"><code>int var_a = 9;
 int *ptr_a = &#x26;var_a;
 /* writing int* ptr_a is equivalent to int *ptr_a (placement of the asterisk) */
@@ -739,5 +739,23 @@ int *ptr_a = &#x26;var_a;
 <pre class="cm-s-default CodeMirror"><code>char* p = NULL; // or char* p = 0;
 </code></pre>
 <hr>
+<p><strong>Code snippet for pratice</strong></p>
+<pre class="cm-s-default CodeMirror"><code>#include &#x3C;stdio.h>
+
+int main(){
+    int a = 5, b = 0;
+    printf("Value of a = %d.\n Address of a = %p.\n", a, &#x26;a);
+
+    int* ptr = NULL; /* initialize a ptr to NULL */
+    ptr = &#x26;a; /* variable ptr now contains address of a */
+    printf("Value of ptr = %p.\n Value at address pointed by p = %d.\n", ptr, *ptr);
+
+    b = *ptr; /* the value of b is now overwritten with value of a*/
+              /* this is equivalent to writing b = a; */
+    printf("Value of b = %d.\n", b);
+
+    return 0;
+}
+</code></pre>
 </body>
 </html>
