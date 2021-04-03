@@ -13,11 +13,11 @@
 
 .doc-embed {
   padding: 0;
-  border: 1px solid #45474B;
+  border: 1px solid #D2D3D6;
   border-radius: 3px;
   margin-bottom: 8px;
 
-  color: #D2D3D6;
+  color: #45474B;
 
   .doc-embed-wrapper {
     display: flex;
@@ -37,7 +37,7 @@
     .threadline {
       flex: 1 1 auto;
       width: 1px;
-      background: #45474B;
+      background: #EDEDEE;
       transition: 0.2s
       display: block;
       margin: auto;
@@ -45,7 +45,7 @@
 
     &:hover .threadline {
       width: 1px;
-      background: #FFF
+      background: #2C2D30
     }
   }
 
@@ -729,10 +729,13 @@ int *ptr_a = &#x26;var_a;
 <li>char* is a pointer to a location in memory that holds a value of type char</li>
 </ul>
 <p>The address of a variable and the value of the variable can be printed using pointers in the following way:</p>
-<p><em>ptr_a will output the address (hexadecimal) while *ptr_a will output the value of var_a
-</em></p>
+<p>_ptr_a will output the address (hexadecimal) while *ptr_a will output the value of var_a</p>
+<p>_</p>
 <pre class="cm-s-default CodeMirror"><code>printf("address of var_a = %p, value of var_a = %d\n",ptr_a, *ptr_a); 
 </code></pre>
+<p>Here is a pictographic notation for ease of understanding.</p>
+<p><img src="https://boostnote.io/api/teams/Ju6Mc5xSM/files/605dd45c21106d478235ccf9f7dd98a097fe02e64e612751ff0834fd92b6600f-pointer.svg"></p>
+<p>Image source - <a href="https://www.2braces.com/images/pointer.svg">https://www.2braces.com/images/pointer.svg</a></p>
 <hr>
 <p><strong>Null pointer</strong></p>
 <p>If a pointer holds the value 0, the it is called null pointer. Typically, a pointer will hold the value 0 at the initialization, which is a good coding practice. If your code tried to access the value pointed by a null pointer, it will result into crashing of your program due to segmentation fault. For example:</p>
@@ -754,6 +757,36 @@ int main(){
               /* this is equivalent to writing b = a; */
     printf("Value of b = %d.\n", b);
 
+    return 0;
+}
+</code></pre>
+<hr>
+<p><strong>Pointer to a pointer a.k.a double-pointer</strong></p>
+<p>First, the use case for having the feature for pointing to a pointer may be not intuitive for beginners. Let's leave the use cases for future. At this moment, it will suffice to understand that variables that are pointers to a given data type are located at some address in main memory. A special sytanx if needed in 'C' language to declare variables that can point to the address at which a pointer is located. Instead of a single asterisk, double asterisk is used to declare a variable that is a pointer to a pointer. You will see more in the example below.</p>
+<p><img src="https://boostnote.io/api/teams/Ju6Mc5xSM/files/6ad4051d8a0d7f58ce5efa7e2a2ed938f331529f2a47a333f63490ad1629567b-Pointer-To-Pointer.jpeg"></p>
+<p>Image source -  <a href="https://media.geeksforgeeks.org/">https://media.geeksforgeeks.org/</a></p>
+<p>For those who are unclear - it is perhaps the jargon that makes it unintuitive. The best way to understand is to put it in 'C' code and play around with it to observe how changing syntax might result in different output. Sometimes our brain trains itself better with reverse engineering.</p>
+<pre class="cm-s-default CodeMirror"><code>#include &#x3C;stdio.h>
+
+int main(){
+    int a = 111;
+    printf("Value of a = %d.\n Address of a = %p.\n", a, &#x26;a);
+
+    int* ptr = NULL; /* initialize a ptr to NULL */
+    ptr = &#x26;a; /* variable ptr now contains address of a */
+    printf("Value of ptr = %p.\n Value at address pointed by p = %d.\n", ptr, *ptr);
+
+    /* Working with Pointer to Pointers*/
+    int **dblPtr = NULL; /* double pointer */
+    dblPtr = &#x26;ptr; /* dblPtr points to the address where ptr is located.
+    '*dblPtr' will point to the address pointed by ptr, i.e. address of a */
+    if(ptr == *dblPtr){
+        printf("ptr == *dblPtr is true.\n");
+        printf("Address of 'dblPtr' = %p. \n", &#x26;dblPtr);
+        printf("Address of 'ptr' and value in dblPtr = %p. \n", dblPtr);
+        printf("Address of 'a' = %p. \n", *dblPtr);
+        printf("Value at address pointed by 'ptr' = %d. \n", **dblPtr);
+    }
     return 0;
 }
 </code></pre>
