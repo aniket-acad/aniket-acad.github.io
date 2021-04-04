@@ -729,7 +729,7 @@ int *ptr_a = &#x26;var_a;
 <li>char* is a pointer to a location in memory that holds a value of type char</li>
 </ul>
 <p>The address of a variable and the value of the variable can be printed using pointers in the following way:</p>
-<p>_ptr_a will output the address (hexadecimal) while *ptr_a will output the value of var_a</p>
+<p>ptr_a will output the address (hexadecimal) while *ptr_a will output the value of var_a</p>
 <p>_</p>
 <pre class="cm-s-default CodeMirror"><code>printf("address of var_a = %p, value of var_a = %d\n",ptr_a, *ptr_a); 
 </code></pre>
@@ -765,7 +765,7 @@ int main(){
 <p>First, the use case for having the feature for pointing to a pointer may be not intuitive for beginners. Let's leave the use cases for future. At this moment, it will suffice to understand that variables that are pointers to a given data type are located at some address in main memory. A special sytanx if needed in 'C' language to declare variables that can point to the address at which a pointer is located. Instead of a single asterisk, double asterisk is used to declare a variable that is a pointer to a pointer. You will see more in the example below.</p>
 <p><img src="https://boostnote.io/api/teams/Ju6Mc5xSM/files/6ad4051d8a0d7f58ce5efa7e2a2ed938f331529f2a47a333f63490ad1629567b-Pointer-To-Pointer.jpeg"></p>
 <p>Image source -  <a href="https://media.geeksforgeeks.org/">https://media.geeksforgeeks.org/</a></p>
-<p>For those who are unclear - it is perhaps the jargon that makes it unintuitive. The best way to understand is to put it in 'C' code and play around with it to observe how changing a bit of code results in different output. Sometimes our brain trains itself better with reverse engineering.</p>
+<p>For those who are unclear - it is perhaps the jargon that makes it unintuitive. The best way to understand is to put it in 'C' code and play around with it to observe how changing a bit of code could result in different output. Sometimes our brain trains itself better with reverse engineering.</p>
 <pre class="cm-s-default CodeMirror"><code>#include &#x3C;stdio.h>
 
 int main(){
@@ -787,6 +787,67 @@ int main(){
         printf("Address of 'a' = %p. \n", *dblPtr);
         printf("Value at address pointed by 'ptr' = %d. \n", **dblPtr);
     }
+    return 0;
+}
+</code></pre>
+<hr>
+<p><strong>Pointer arithmetic</strong></p>
+<p>Just like arithmetic operations on int and float data type, even pointers can be incremented, decremented, added with another pointer or subtracted from a pointer. After all, pointers are also numbers that are typically expressed in hexadecimal format. Here is a list of arithmetic operations for pointers:</p>
+<ul>
+<li>Increment/Decrement of a Pointer</li>
+<li>Addition/Subtraction of integer to/from a pointer</li>
+<li>Adding/Subtracting two pointers of the same type</li>
+</ul>
+<p>When a pointer is incremented, it increments by the number equal to the size of the respective data type. For example, if an integer pointer (type 'short') stores address 1024 then the '++' operator will increment by 2 (bytes). The new value of pointer will now have address 1026.</p>
+<pre class="cm-s-default CodeMirror"><code>int main(){
+    int a = 111;
+
+    int* ptr = NULL; /* initialize a ptr to NULL */
+    ptr = &#x26;a; /* variable ptr now contains address of a */
+    printf("Value of ptr = %p.\n", ptr);
+    ptr++; /*increment the value of pointer.*/
+    printf("Value of ptr after increment = %p.\n", ptr);
+    ptr--;
+    printf("Value of ptr after decrement = %p.\n", ptr);
+    
+    int *ptr2 = ptr;
+    ptr2++;
+    int diffVal = ptr2 - ptr; 
+    /*This operation above show the size of integer in bytes*/
+    /*However we are operating on two hexadecimal numbers. To get the correct value in
+    bytes, first the hexadecimal value must be typecast/converted to integer format. */
+    diffVal = (unsigned long int)ptr2- (unsigned long int)ptr;
+    printf("Size of integer in bytes = %d.\n", diffVal); 
+
+    int *ptr3 = ptr + 2; 
+    /*ptr + 2 will add twice the number of bytes as per 
+    the byte-size of int data type i.e. 4 bytes*/  
+    diffVal = (unsigned long int)ptr3- (unsigned long int)ptr;
+    printf("Size of integer in bytes = %d.\n", diffVal); 
+
+    /*Pointer can be used to manipulate the value of variable it points*/
+    ++*ptr; /*++ptr is different from ++*pt*/
+    printf("New value of 'a' pointed by 'ptr' = %d.\n", *ptr);
+
+    return 0;
+}
+</code></pre>
+<hr>
+<p><strong>Pointers and functions</strong></p>
+<p>A function can take address of variable(s) as input. Once the address of a variable become available to a called function that was passed from another (callee) function, the value of that variable can be manipulated inside the called function. Below is a C example to demonstrate.</p>
+<pre class="cm-s-default CodeMirror"><code>void swap(int *ptr_x, int *ptr_y)
+{
+    int temp = *ptr_x;
+    *ptr_x = *ptr_y;
+    *ptr_y = temp;
+}
+  
+int main()
+{
+    int x = 10; int y = 20;
+    /*The addresses of variable x and y are passed as arguments to the swap function*/
+    swap(&#x26;x, &#x26;y);
+    printf("Swapped values are: x = %d, y = %d\n", x, y);
     return 0;
 }
 </code></pre>
