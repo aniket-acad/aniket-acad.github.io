@@ -700,8 +700,9 @@ hr {
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
 </head>
 <body>
-<h1><strong>Introduction to Pointers</strong></h1>
-<p>CSL 102; Data Structures; IIIT Nagpur</p>
+<h2>Introduction to Pointers</h1>
+<h4>CSL 102; Data Structures; IIIT Nagpur</p>
+<h4>Created by: Dr. Aniket Pingley</h4>  
 <p><strong>Why you must learn and master pointers</strong></p>
 <p>Many popular languages today do not use pointers, e.g., Python, Java, CSharp, Javascript etc. It is obvious that one might wonder why educators focus on teaching pointers and expect the students to master the subject. </p>
 <p>Generally speaking, coding or programming in any language is essentially a practice or skill to implement a piece of logic to manage and process data. From a coder's perspective this data is available in the main memory (RAM) of a computer system. While in elementary examples of coding, singular data is often used, complex scenarios require handling a high volume of data. It is thus important to understand how data can be structued and organized in the main memory, where certain ways of oragnizing the data makes its access and manipulation highly efficient in certain scenarios. </p>
@@ -709,7 +710,7 @@ hr {
 <p>A lot of commercial coding logic is implemented in C and C++ due its speed and light memory footprint. And, this commercial code uses pointers to manage different data structuring logic. It is thus important that students master the use of pointers, which will underpin their understanding of preliminary as well as advanced data structures.   </p>
 <hr>
 <p><strong>Understanding the structure of main memory</strong></p>
-<p><img src="https://boostnote.io/api/teams/Ju6Mc5xSM/files/c1ff2965a62a4a78490de41379e1c2f9999c0f5ce1d699716c6dec4274b76cde-image.png"></p>
+<p><img src="images/152d297e-a4bd-43fb-a5b4-7bdc275e5322.png"></p>
 <p>Image source - <a href="https://faculty.etsu.edu/tarnoff/ntes2150/memory/memory.htm">https://faculty.etsu.edu/tarnoff/ntes2150/memory/memory.htm</a></p>
 <p>Assuming that each cell is a D flip flop that contains a single bit, the first row (top) contains 8 bits. As an example, 'char' data type is represented using 8 bits (1 byte). For both 64-bit as well as 32-bit architectures, the main memory is byte-addressed. Thus, the top row can store value of a'char' type variable and accessible using a single byte address. </p>
 <p>For data items larger than 'char', for example 'int', which can be either 16 or 32 bits, multiple rows of flip-flops will be used in order. A block of memory, notwithstanding the size of the variable-type, is addressed the first byte in the block. For example, an 'int' stored in bytes 2048-2049 (16 bits, 0x800-0x801 in hexadecimal) has address 2048. Programming languages that allow pointers (e.g., C and C++) implement the required logic to process a block of memory in accordance with the data type.</p>
@@ -734,7 +735,7 @@ int *ptr_a = &#x26;var_a;
 <pre class="cm-s-default CodeMirror"><code>printf("address of var_a = %p, value of var_a = %d\n",ptr_a, *ptr_a); 
 </code></pre>
 <p>Here is a pictographic notation for ease of understanding.</p>
-<p><img src="https://boostnote.io/api/teams/Ju6Mc5xSM/files/605dd45c21106d478235ccf9f7dd98a097fe02e64e612751ff0834fd92b6600f-pointer.svg"></p>
+<p><img src="images/2a038d56-ec10-4a75-b77d-f15714caec34.svg"></p>
 <p>Image source - <a href="https://www.2braces.com/images/pointer.svg">https://www.2braces.com/images/pointer.svg</a></p>
 <hr>
 <p><strong>Null pointer</strong></p>
@@ -763,7 +764,7 @@ int main(){
 <hr>
 <p><strong>Pointer to a pointer a.k.a double-pointer</strong></p>
 <p>First, the use case for having the feature for pointing to a pointer may be not intuitive for beginners. Let's leave the use cases for future. At this moment, it will suffice to understand that variables that are pointers to a given data type are located at some address in main memory. A special sytanx if needed in 'C' language to declare variables that can point to the address at which a pointer is located. Instead of a single asterisk, double asterisk is used to declare a variable that is a pointer to a pointer. You will see more in the example below.</p>
-<p><img src="https://boostnote.io/api/teams/Ju6Mc5xSM/files/6ad4051d8a0d7f58ce5efa7e2a2ed938f331529f2a47a333f63490ad1629567b-Pointer-To-Pointer.jpeg"></p>
+<p><img src="images/8f7254af-82c5-4eea-8667-d1a23d3642c3.jpeg"></p>
 <p>Image source -  <a href="https://media.geeksforgeeks.org/">https://media.geeksforgeeks.org/</a></p>
 <p>For those who are unclear - it is perhaps the jargon that makes it unintuitive. The best way to understand is to put it in 'C' code and play around with it to observe how changing a bit of code could result in different output. Sometimes our brain trains itself better with reverse engineering.</p>
 <pre class="cm-s-default CodeMirror"><code>#include &#x3C;stdio.h>
