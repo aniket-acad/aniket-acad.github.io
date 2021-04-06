@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Arrays</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta keywords="">
+<style>
+
+.CodeMirror {
+  height: inherit;
+}
+
+.doc-embed {
+  padding: 0;
+  border: 1px solid #D2D3D6;
+  border-radius: 3px;
+  margin-bottom: 8px;
+
+  color: #45474B;
+
+  .doc-embed-wrapper {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
+  }
+
+  .collapse-trigger {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4px;
+    padding-left: 4px;
+    cursor: pointer;
+    overflow: hidden;
+
+    .threadline {
+      flex: 1 1 auto;
+      width: 1px;
+      background: #EDEDEE;
+      transition: 0.2s
+      display: block;
+      margin: auto;
+    }
+
+    &:hover .threadline {
+      width: 1px;
+      background: #2C2D30
+    }
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    fill: currentColor;
+  }
+
+  &.collapsed {
+    .collapse-trigger  {
+      .threadline {
+        display: none;
+      }
+      svg {
+        transform: rotate(-90deg);
+      }
+    }
+    .doc-embed-content {
+      display: none;
+    }
+  }
+
+  .embed-body {
+    min-width: 0;
+  }
+
+  .doc-embed-header {
+    display: flex;
+    align-items: center;
+
+    & > div {
+      flex: 1;
+      min-width: 0;
+      padding: 8px 16px 8px 4px;
+    }
+
+    h1, a {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      display: block;
+    }
+
+    a > svg {
+      margin-right: 5px;
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+  }
+
+  .doc-embed-content {
+    padding: 0 16px;
+  }
+}
+
+-ms-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
+line-height: 1.6;
+font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+  sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+
+.dark, .solarizedDark {
+  color: #FFF;
+}
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+a {
+  background-color: transparent;
+}
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+img {
+  border-style: none;
+}
+
+code,
+kbd,
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+input {
+  font: inherit;
+  margin: 0;
+}
+
+input {
+  overflow: visible;
+}
+
+[type='checkbox'] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: 600;
+}
+
+hr {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+hr:before {
+  content: '';
+  display: table;
+}
+
+hr:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+details summary {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h3,
+h4 {
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h5,
+h6 {
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 12px;
+}
+
+p {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+blockquote {
+  margin: 0;
+}
+
+ol,
+ul {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+ol ol,
+ul ol {
+  list-style-type: lower-roman;
+}
+
+ol ol ol,
+ol ul ol,
+ul ol ol,
+ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+dd {
+  margin-left: 0;
+}
+
+code,
+pre {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+    monospace;
+  font-size: 12px;
+}
+
+pre.CodeMirror,
+code.CodeMirror {
+  height: auto;
+}
+
+pre {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+&:before {
+  content: '';
+  display: table;
+}
+
+&:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+> :first-child {
+  margin-top: 0 !important;
+}
+
+> :last-child {
+  margin-bottom: 0 !important;
+}
+
+a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+blockquote,
+dl,
+ol,
+p,
+pre,
+table,
+ul {
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+hr {
+  background-color: #e1e4e8;
+  border: 0;
+  height: 1px;
+  margin: 16px 0;
+  padding: 0;
+}
+
+blockquote {
+  border-left: 0.25em solid #e1e4e8;
+  color: #999999;
+  padding: 0 1em;
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+kbd {
+  background-color: #fafbfc;
+  border: 1px solid #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+  color: #444d56;
+  display: inline-block;
+  font-size: 11px;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin: 8px 0;
+}
+
+h1 {
+  margin-top: 32px;
+  font-weight: 600;
+  font-size: 1.953em;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 1.5em;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 1.25em;
+}
+
+h4 {
+  font-weight: 400;
+  font-size: 1em;
+}
+
+h5 {
+  font-weight: 400;
+  font-size: 0.875em;
+}
+
+h6 {
+  font-weight: 400;
+  color: #6a737d;
+  font-size: 0.85em;
+}
+
+ol,
+ul {
+  padding-left: 2em;
+}
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+li {
+  word-wrap: break-all;
+}
+
+li > p {
+  margin-top: 16px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+li + li {
+  margin-top: 0.25em;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 16px;
+  padding: 0;
+}
+
+dl dd {
+  margin-bottom: 16px;
+  padding: 0 16px;
+}
+
+table {
+  display: block;
+  overflow: auto;
+  width: 100%;
+}
+
+table th {
+  font-weight: 600;
+}
+
+table td,
+table th {
+  border: 1px solid #dfe2e5;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #c6cbd1;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 15px 0;
+  box-sizing: content-box;
+}
+
+img[align='right'] {
+  padding-left: 20px;
+}
+
+img[align='left'] {
+  padding-right: 20px;
+}
+
+code {
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+  font-size: 85%;
+  margin: 0;
+  padding: 0.2em 0.4em;
+}
+
+p code,
+li code
+{
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+pre {
+  word-wrap: normal;
+}
+
+pre > code {
+  background: transparent;
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  word-break: normal;
+}
+
+.highlight {
+  margin-bottom: 16px;
+}
+
+.highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.highlight pre,
+pre {
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font-size: 85%;
+  line-height: 1.45;
+  overflow: auto;
+  padding: 16px;
+}
+
+pre code {
+  background-color: transparent;
+  border: 0;
+  display: inline;
+  line-height: inherit;
+  margin: 0;
+  max-width: auto;
+  overflow: visible;
+  padding: 0;
+  word-wrap: normal;
+}
+
+kbd {
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+  color: #444d56;
+  display: inline-block;
+  font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+    monospace;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+:checked + .radio-label {
+  border-color: #0366d6;
+  position: relative;
+  z-index: 1;
+}
+
+.task-list-item {
+  position: relative;
+  list-style-type: none;
+  height: fit-content;
+  min-height: 25px;
+}
+
+.task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+
+.task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+.task-list-item input[type=checkbox] {
+  position: absolute;
+  top: 6px;
+}
+
+hr {
+  border-bottom-color: #eee;
+}
+
+.dark p code,
+.dark li code
+{
+  background-color: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.3);
+  color: #5580DC;
+}
+
+.auto p code,
+.auto li code
+{
+  background-color: #F9F9F9;
+  border-color: rgba(0,0,0,0.26);
+  color: #5580DC;
+}
+
+.light p code,
+.light li code
+{
+  background-color: #F9F9F9;
+  border-color: rgba(0,0,0,0.26);
+  color: #5580DC;
+}
+
+.sepia p code,
+.sepia li code
+{
+  background-color: #efe8d6;
+  border-color: rgba(0,0,0,0.26);
+  color: #F77942;
+}
+
+.solarizedDark p code,
+.solarizedDark li code
+{
+  background-color: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.3);
+  color: #36abe3;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+</head>
+<body>
+<h2>Array Data Structure</h2>
+<p>CSL 102; Data Structures; IIIT Nagpur</p>
+<p>Created by Dr. Aniket Pingley</p>
+<p><strong><em>Disclaimer:</em></strong> Some part of the notes here are used verbatim from the book "Fundamentals Of Data Structures in C" by Ellis Horowitz, Sartaj Sahni, and Susan Anderson-Freed.</p>
+<p><strong>Ordered Lists</strong></p>
+<p>Having data artifacts/objects in some pre-defined order is commonplace. For example</p>
+<ul>
+<li>Days in a week: Mon, Tue, Wed ... Sun</li>
+<li>Hours in a day: 1, 2, 3, 4 ... 24</li>
+<li>Floors in a building: Ground, First, Second ... and so on</li>
+<li>Class roll no: BT20CSE001, BT20CSE002 through BT20CSE200 </li>
+</ul>
+<p>A list of such data artifacts can rightly be called linear list due to its ordering. </p>
+<p>To better understand any concept that has a multitude of applications, it is better first expressed in an abstract manner. Thus, we will express a linear list using the following notation:</p>
+<p>L = (l<sub>1</sub>, l<sub>2</sub>, l<sub>3</sub>, l<sub>4</sub> .... l<sub>n</sub>), where l<sub>i</sub> is an element in the set L. </p>
+<p>There are a variety of operations that are performed on these lists. These operations include:</p>
+<ul>
+<li>find the length of the list, n</li>
+<li>read the list from left-to-right (or right-to-left)</li>
+<li>retrieve the <em>i</em>-th element</li>
+<li>store a new value into the <em>i</em>-th position</li>
+<li>insert a new element at position causing elements numbered i,i + 1, ...,n to become numbered i + 1,i + 2, ...,n + 1</li>
+<li>delete the element at position causing elements numbered i + 1, ...,n to become numbered i,i + 1, ...,n - 1</li>
+</ul>
+<hr>
+<p><strong>Arrays</strong></p>
+<p>The main memory is organized for access and storage in either row-major or column-major order. This ordering provides for sequential mapping of addresses, i.e. addresses have a numeric order. From a programmer's perspective, numerically-ordered addresses are located next to each other. </p>
+<p>It is often that programmers will require to store collection of data items of the same type together, i.e. in a <strong><em>contiguous</em></strong> manner. The structuring/organizing of data elements, which is of the same type, in contiguous memory is called an Array. </p>
+<p><img src="images/71f3236d-deae-4038-9c62-bf25d1f3d0ab.png" width="50%" height="50%"></p>
+<p>In the figure above, it can be seen that the character Q is stored at address 0x100 (hexadecimal) and W E R T and Y are stored contiguously, i.e. they have sequential or linear addressing.</p>
+<p>In 'C' programming, an Array is identified using its starting address, data tye and size; all elements in an array must of the same data type. Each individual element can be accessed using an index, where the starting index is ZERO. The code snippet below makes the access of values in an array amply clear.</p>
+<p><img src="images/f7e898cf-e6a7-4f35-9751-9bfc5a14f74e.png" width="30%" height="30%"></p>
+<p><img src="images/cf1b21c2-1926-4252-8ee5-35238fb0f755.png" width="30%" height="30%"></p>
+<p><em>Image source: The C Programming Language by Kernighan and Ritchie</em></p>
+<p>In the image above, <em>pa</em> is a pointer variable that is initialized with the starting address of array <em>a</em></p>
+<pre class="cm-s-default CodeMirror"><code>int main(){
+    /*Two ways to initialize array*/
+    int intArr[10] = {0}; /*initialize all elements to ZERO*/
+    double doubleArr[10] = {0}; /*initialize all elements to ZERO*/
+
+    /*initialize array with multiple values*/
+    int intArrInitialized[10] = {1,2,3,4,5,6,7,8,9,10}; 
+
+    /*Rewrite values in an array using for loop*/
+    for(unsigned short idx = 0; idx &#x3C; 10; idx++){
+        intArr[idx] = 5 * idx;
+        doubleArr[idx] = -2.0 * idx;
+    }
+    
+    /*print values in an array using for loop*/
+    for(unsigned short idx = 0; idx &#x3C; 10; idx++){
+        printf("intArr[%d] = %d, doubleArr[%d] = %f, intArrInitialized[%d] = %d\n\n",\
+        idx, intArr[idx], idx, doubleArr[idx], idx, intArrInitialized[idx]);
+    }
+
+    /*print address of elements in array using for loop*/
+    for(unsigned short idx = 0; idx &#x3C; 9; idx++){
+        printf("&#x26;intArr[%d] = %p, &#x26;doubleArr[%d] = %p,\n\
+        Bytes between indices for intArr = %u,\n\
+        Bytes between indices for doubleArr = %u\n\n",\
+        idx, &#x26;intArr[idx], idx, &#x26;doubleArr[idx],\
+        (unsigned int)&#x26;intArr[idx + 1] - (unsigned int)&#x26;intArr[idx],\
+        (unsigned int)&#x26;doubleArr[idx + 1] - (unsigned int)&#x26;doubleArr[idx]);
+    }
+
+    /*Strings in C are created as char array*/
+    /*There are two ways to initialze char arrays for processing as strings*/
+    char charArr[6] = {'H','e','l','l','o','\0'};
+    char string[] = "World"; /**/
+
+    printf("Message: %s, %s\n", charArr, string); 
+}
+</code></pre>
+<p>The numerical order of the indices are mathematically related with the set of addresses that form an array. Accessing the value at a given index equals to calculating the corresponding address by adding the index value to the starting address of the array. For example, the value 'E' can be accessed directly using the operation <em>arr[2]</em>, which is enabled by adding 2 to 0x100 - the starting address.</p>
+<p>Since working with arrays is essentianlly managing access using addresses, pointers can also be used to access arrays. The code snippet below will make it amply clear.</p>
+<pre class="cm-s-default CodeMirror"><code>int main(){
+    int intArr[5] = {34, 25, 7, -8, 45};
+    double doubleArr[5] = {2.6, -9.7, 4, 56, 34.2}; 
+
+    /*get the starting address of array using pointers*/
+    int *ptrArrInt = intArr; 
+    double *ptrArrDouble = doubleArr;
+
+    /*print values in an array using pointer arithmetic*/
+    for(unsigned short idx = 0; idx &#x3C; 5; idx++){
+        printf("intArr[%d] = %d\n", idx, *(ptrArrInt + idx));
+        printf("doubleArr[%d] = %f\n", idx, *(ptrArrDouble + idx));
+    }
+
+     /*Rewrite values in an array
+     Access next element in an array using increment operator on pointers*/
+    for(unsigned short idx = 0; idx &#x3C; 5; idx++){
+        *intArr = *intArr * -1;
+        *doubleArr = *doubleArr * -1;
+        ++ptrArrInt; /*point to the next address in the array*/
+        ++ptrArrDouble;
+    }
+    
+    /*reinitialize the pointers to address of second element in the array*/
+    ptrArrInt = intArr + 1; 
+    ptrArrDouble = doubleArr + 1;
+    /*to point to third element in the array, simply do
+    ptrArrInt = intArr + 2; 
+    ptrArrDouble = doubleArr + 2;
+    */
+
+    /*print values in an array using for loop*/
+    for(unsigned short idx = 0; idx &#x3C; 4; idx++){
+        printf("intArr[%d] = %d\n", idx, *ptrArrInt);
+        printf("doubleArr[%d] = %f\n", idx, *ptrArrDouble);
+        ++ptrArrInt;
+        ++ptrArrDouble;
+    }
+}
+</code></pre>
+</body>
+</html>
