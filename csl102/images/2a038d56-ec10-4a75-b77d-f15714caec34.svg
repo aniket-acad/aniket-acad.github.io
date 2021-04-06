@@ -1,0 +1,106 @@
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" style="font-family:sans-serif" xmlns="http://www.w3.org/2000/svg" height="140.51mm" width="134.95mm" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 478.15528 497.8706">
+ <defs>
+  <filter id="c" style="color-interpolation-filters:sRGB">
+   <feFlood flood-color="rgb(137,223,70)" result="flood"/>
+   <feComposite operator="in" result="composite1" in2="SourceGraphic" in="flood"/>
+   <feGaussianBlur stdDeviation="1.6" result="blur" in="composite1"/>
+   <feOffset result="offset" dx="0" dy="0"/>
+   <feComposite operator="over" result="composite2" in2="offset" in="SourceGraphic"/>
+  </filter>
+  <marker id="a" refY="0" refX="0" style="overflow:visible" isstock="true" stockid="Arrow2Mend" orient="auto">
+   <path style="stroke:#000;stroke-width:.625;fill:#ff9b00" transform="scale(-.6)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z"/>
+  </marker>
+  <marker id="g" refY="0" refX="0" style="overflow:visible" collect="always" isstock="true" stockid="Arrow2Mend" orient="auto">
+   <path style="stroke:#000;stroke-width:.625;fill:#ff9b00" transform="scale(-.6)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z"/>
+  </marker>
+  <marker id="b" refY="0" refX="0" style="overflow:visible" isstock="true" stockid="Arrow2Mend" orient="auto">
+   <path style="stroke:#000;stroke-width:.625;fill:#ff9b00" transform="scale(-.6)" d="m8.7186 4.0337-10.926-4.0177 10.926-4.0177c-1.7455 2.3721-1.7354 5.6175-6e-7 8.0354z"/>
+  </marker>
+  <filter id="d" style="color-interpolation-filters:sRGB">
+   <feFlood flood-color="rgb(243,193,123)" result="flood"/>
+   <feComposite operator="in" result="composite1" in2="SourceGraphic" in="flood"/>
+   <feGaussianBlur stdDeviation="0.4" result="blur" in="composite1"/>
+   <feOffset result="offset" dx="0.8" dy="0.260417"/>
+   <feComposite operator="over" result="composite2" in2="offset" in="SourceGraphic"/>
+  </filter>
+  <filter id="e" style="color-interpolation-filters:sRGB">
+   <feFlood flood-color="rgb(243,193,123)" result="flood"/>
+   <feComposite operator="in" result="composite1" in2="SourceGraphic" in="flood"/>
+   <feGaussianBlur stdDeviation="0.4" result="blur" in="composite1"/>
+   <feOffset result="offset" dx="0.8" dy="0.260417"/>
+   <feComposite operator="over" result="composite2" in2="offset" in="SourceGraphic"/>
+  </filter>
+  <filter id="f" style="color-interpolation-filters:sRGB">
+   <feFlood flood-color="rgb(243,193,123)" result="flood"/>
+   <feComposite operator="in" result="composite1" in2="SourceGraphic" in="flood"/>
+   <feGaussianBlur stdDeviation="0.4" result="blur" in="composite1"/>
+   <feOffset result="offset" dx="0.8" dy="0.260417"/>
+   <feComposite operator="over" result="composite2" in2="offset" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <g transform="translate(-115.21 -60.57)" groupmode="layer" label="Layer 1">
+  <g export-xdpi="500" transform="translate(-253.21 46.116)" export-ydpi="500">
+   <g transform="matrix(1.83 0 0 1.7975 -33.659 -513.07)">
+    <rect style="filter:url(#c);stroke-opacity:0;fill:#b4e979" transform="matrix(1 0 0 -1 2.1551 0)" height="158.97" width="119.29" y="-554.55" x="292.87"/>
+    <path style="stroke:#7ca669;stroke-width:.55136px;fill:#a3c67d" d="m295.02 415.58h119.29"/>
+    <path style="stroke:#7ca669;stroke-width:.55136px;fill:#a3c67d" d="m295.02 435.86h119.29"/>
+    <path style="stroke:#7ca669;stroke-width:.55136px;fill:#a3c67d" d="m295.02 455.58h119.29"/>
+    <path style="stroke:#7ca669;stroke-width:.55136px;fill:#a3c67d" d="m295.02 475.86h119.29"/>
+    <path style="stroke:#7ca669;stroke-width:.55136px;fill:#a3c67d" d="m295.02 495.58h119.29"/>
+    <path style="stroke:#7ca669;stroke-width:.55136px;fill:#a3c67d" d="m295.02 515.86h119.29"/>
+    <path style="stroke:#7ca669;stroke-width:.55136px;fill:#a3c67d" d="m295.02 535.58h119.29"/>
+    <text y="409.05756" x="350.56238" style="font-size:12.5px;fill:#515151">
+     <tspan y="409.05756" x="350.56238" role="line">5</tspan>
+    </text>
+    <text y="430.2543" x="350.61121" style="font-size:12.5px;fill:#515151">
+     <tspan y="430.2543" x="350.61121" role="line">6</tspan>
+    </text>
+    <text y="410.73965" x="242.64101" style="font-size:12.5px;fill:#4d4d4d">
+     <tspan y="410.73965" x="242.64101" role="line">a</tspan>
+    </text>
+    <text y="432.38712" x="242.04286" style="font-size:12.5px;fill:#4d4d4d">
+     <tspan y="432.38712" x="242.04286" role="line">b</tspan>
+    </text>
+    <text y="450.00003" x="236.5558" style="font-size:12.5px;fill:#4d4d4d">
+     <tspan y="450.00003" x="236.5558" role="line">ptr</tspan>
+    </text>
+    <text y="450.26346" x="326.9906" style="font-size:12.5px;fill:#515151">
+     <tspan y="450.26346" x="326.9906" role="line">4214000</tspan>
+    </text>
+    <text y="413.22604" x="423.31473" style="font-size:12.5px;fill:#4d4d4d">
+     <tspan y="413.22604" x="423.31473" role="line">4214000</tspan>
+    </text>
+    <text y="433.27048" x="423.20486" style="font-size:12.5px;fill:#4d4d4d">
+     <tspan y="433.27048" x="423.20486" role="line">4214004</tspan>
+    </text>
+    <text y="453.33322" x="423.27505" style="font-size:12.5px;fill:#4d4d4d">
+     <tspan y="453.33322" x="423.27505" role="line">4214008</tspan>
+    </text>
+    <path style="stroke:#000;stroke-width:.55136px;marker-end:url(#a);fill:#ff9b00" d="m270.63 406.84h20"/>
+    <path style="stroke:#000;stroke-width:.55136px;marker-end:url(#g);fill:#ff9b00" d="m270.63 427.48h20"/>
+    <path style="stroke:#000;stroke-width:.55136px;marker-end:url(#b);fill:#ff9b00" d="m270.63 447.23h20"/>
+    <text y="387.92569" x="225.17239" style="filter:url(#d);font-size:9.8605px;fill:#ff7f2a">
+     <tspan y="387.92569" x="225.17239" style="font-size:12.5px;fill:#ff7f2a" role="line">Variables</tspan>
+    </text>
+    <text y="386.5585" x="328.99561" style="filter:url(#e);font-size:9.8605px;fill:#ff7f2a">
+     <tspan y="386.5585" x="328.99561" style="font-size:12.5px;fill:#ff7f2a" role="line">Memory</tspan>
+    </text>
+    <text y="387.92569" x="426.63687" style="filter:url(#f);font-size:9.8605px;fill:#ff7f2a">
+     <tspan y="387.92569" x="426.63687" style="font-size:12.5px;fill:#ff7f2a" role="line">Address</tspan>
+    </text>
+    <text y="302.56003" x="334.93484" style="font-size:12.5px;fill:#605959">
+     <tspan y="302.56003" x="334.93484" role="line">a = 5;</tspan>
+    </text>
+    <text y="321.37881" x="334.61609" style="font-size:12.5px;fill:#605959">
+     <tspan y="321.37881" x="334.61609" role="line">b = 10;</tspan>
+    </text>
+    <text y="339.66367" x="324.34967" style="font-size:12.5px;fill:#605959">
+     <tspan y="339.66367" x="324.34967" role="line">ptr = &amp;a;</tspan>
+    </text>
+    <text y="464.52377" x="426.99377" style="font-size:20px;fill:#000000">
+     <tspan y="464.52377" x="426.99377" role="line"/>
+    </text>
+   </g>
+  </g>
+ </g>
+</svg>
