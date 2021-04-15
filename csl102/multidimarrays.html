@@ -718,8 +718,9 @@ hr {
 
 <hr>
 <p><strong>Two-dimensional arrays</strong></p>
-<p>Typically programmers deal with arrays that have single dimension, which translates to array data structure that has a single row and multiple columns. Intuitively, each value of single dimensional array is located at a different column. When an array data structure has multiple rows along with multiple columns, it becomes two-dimensional. The number of rows and columns need not be same. For N rows and M columns, the indexing of the two dimensional array will range from 0 to N-1 and 0 to M-1.</p>
+<p>Typically programmers deal with arrays that have single dimension, which translates to array data structure that has a single row and multiple columns. Intuitively, each value of single dimensional array is located at a different column. When an array data structure has multiple rows along with multiple columns, it becomes two-dimensional. The number of rows and columns need not be same. For R rows and C columns, the indexing of the two dimensional array will range from 0 to R-1 and 0 to C-1.</p>
 <pre class="cm-s-default CodeMirror"><code>
+  
   #define ROWS 3
   #define COLUMNS 4
   
@@ -750,7 +751,7 @@ hr {
   
       return 0;
   }
-</code></pre>
+</code></pre> 
 
 <hr>
 <p><strong>Three-dimensional arrays</strong></p>
@@ -759,14 +760,15 @@ hr {
 <p><em>Image source: Geeks for Geeks</em></p>
 
 <pre class="cm-s-default CodeMirror"><code>
+  /*Assume the preprocessor directive #define DEPTH 3*/
   /*series of 3 two dimensional arrays*/
-    int threeD_arr3[3][ROWS][COLUMNS] = {
+    int threeD_arr3[DEPTH][ROWS][COLUMNS] = {
         {{0,1,2,3}, {4,5,6,7}, {8,9,10,11}},
         {{0,-1,-2,-3}, {-4,-5,-6,-7}, {-8,-9,-10,-11}},
         {{2,4,6,8}, {-2,-4,-6,-8}, {12,13,14,15}}
         };
 
-    for (short i = 0; i < 3; i++){
+    for (short i = 0; i < DEPTH; i++){
         for (short j = 0; j < ROWS; j++){
             for (short k = 0; k < COLUMNS; k++){
                 printf("threeD_arr3[%d][%d][%d] = %d\n", i,j,k, threeD_arr3[i][j][k]);
@@ -774,6 +776,28 @@ hr {
         }
     }
 </code></pre>
+  
+<hr>
+<p><strong>Calculating the index values & addresses for 2D and 3D arrays</strong></p>
+<p>Since multidimensional arrays are implemented using contiguous memory locations, a simple arithmetic formula can be devised for calculating the single dimensional index for a given set of depth, rows and columns. Consider the following:
+<ul>
+<li>D = total depth</li>
+<li>R = total rows</li>
+<li>C = total columns</li>
+<li>S = starting address of the array</li>
+<li>Z = size of the array data type</li>
+<li><em>d</em> = current depth (range 0 to D-1)</li>
+<li><em>r</em> = current row (range 0 to R-1)</li>
+<li><em>c</em> = current column (range 0 to C-1)</li>
+</ul>
+<p><em>arr2[R][C]</em> is a two dimensional array. <em>arr3[D][R][C]</em> is a three dimensional array. Assuming row-major order: </p>
+<ul>
+  <li>For a given lookup operation arr2[r][c], index = <em>r</em> * C + c</li>
+  <li>For a given lookup operation arr2[r][c], address = S * Z * (<em>r</em> * C + c)</li>
+  <li>For a given lookup operation arr3[d][r][c], index = <em>d</em> * R * C + <em>r</em> * C +  c</li>
+  <li>For a given lookup operation arr3[d][r][c], address = S * Z * (<em>d</em> * R * C + <em>r</em> * C +  c)</li>
+</ul>
+</p>
   
 <br>
 <div id="colorstrip"/> 
