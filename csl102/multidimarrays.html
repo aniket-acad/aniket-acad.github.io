@@ -793,9 +793,9 @@ hr {
 <p><em>arr2[R][C]</em> is a two dimensional array. <em>arr3[D][R][C]</em> is a three dimensional array. Assuming row-major order: </p>
 <ul>
   <li>For a given lookup operation arr2[r][c], index = <em>r</em> * C + c</li>
-  <li>For a given lookup operation arr2[r][c], address = S * Z * (<em>r</em> * C + c)</li>
+  <li>For a given lookup operation arr2[r][c], address = S + Z * (<em>r</em> * C + c)</li>
   <li>For a given lookup operation arr3[d][r][c], index = <em>d</em> * R * C + <em>r</em> * C +  c</li>
-  <li>For a given lookup operation arr3[d][r][c], address = S * Z * (<em>d</em> * R * C + <em>r</em> * C +  c)</li>
+  <li>For a given lookup operation arr3[d][r][c], address = S + Z * (<em>d</em> * R * C + <em>r</em> * C +  c)</li>
 </ul>
 </p>
   
