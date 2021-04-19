@@ -785,6 +785,7 @@ hr {
 <li>R = total rows</li>
 <li>C = total columns</li>
 <li>S = starting address of the array</li>
+<li>Z = size of data type of array in bytes</li>
 <li><em>d</em> = current depth (range 0 to D-1)</li>
 <li><em>r</em> = current row (range 0 to R-1)</li>
 <li><em>c</em> = current column (range 0 to C-1)</li>
@@ -792,12 +793,14 @@ hr {
 <p><em>arr2[R][C]</em> is a two dimensional array. <em>arr3[D][R][C]</em> is a three dimensional array. Assuming row-major order: </p>
 <ul>
   <li>For a given lookup operation arr2[r][c], index = <em>r</em> * C + c</li>
-  <li>For a given lookup operation arr2[r][c], address = S + (<em>r</em> * C + c)</li>
+  <li>For a given lookup operation arr2[r][c], address = S + Z * (<em>r</em> * C + c)</li>
   <li>For a given lookup operation arr3[d][r][c], index = <em>d</em> * R * C + <em>r</em> * C +  c</li>
-  <li>For a given lookup operation arr3[d][r][c], address = S + (<em>d</em> * R * C + <em>r</em> * C +  c)</li>
+  <li>For a given lookup operation arr3[d][r][c], address = S + Z * (<em>d</em> * R * C + <em>r</em> * C +  c)</li>
 </ul>
 </p>
-  
+<p>
+It must be noted that while performing lookup operation in C language using pointers, the size of data type (Z, above) must not be used. Pointer arithmetic will increment or decrement the addresses based on the type of data that the pointer points. For example, adding 1 to int* will increment the address by 4 bytes. However adding 1 to char* increments the address by 1 byte. 
+</p>  
 <br>
 <div id="colorstrip"/> 
 <br><br>
