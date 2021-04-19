@@ -799,8 +799,25 @@ hr {
 </ul>
 </p>
 <p>
-It must be noted that while performing lookup operation in C language using pointers, the size of data type (Z, above) must not be used. Pointer arithmetic will increment or decrement the addresses based on the type of data that the pointer points. For example, adding 1 to int* will increment the address by 4 bytes. However adding 1 to char* increments the address by 1 byte. 
+It must be noted that while performing lookup operation in C language using pointers, the size of data type (Z, above) must not be used. Pointer arithmetic will increment or decrement the addresses based on the type of data that the pointer points. For example, adding 1 to int* will increment the address by 4 bytes. However, adding 1 to char* increments the address by 1 byte. The code snippet below will make it amply clear. 
 </p>  
+  
+  
+<pre class="cm-s-default CodeMirror"><code>
+  
+  int main()
+  {
+    int a[10] = {0};
+    char s[] = "qwertyuiop";
+    int *r = a;
+    char *t = s;
+    printf("%p, %p\n", r, r+1);
+    printf("%p, %p\n", t, t+1);
+
+    return 0;
+  }
+  </code></pre>
+  
 <br>
 <div id="colorstrip"/> 
 <br><br>
