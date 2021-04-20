@@ -718,6 +718,7 @@ hr {
 <h4>CSL 102; Data Structures; IIIT Nagpur; Created by: Dr. Aniket Pingley</h4>
 <p><strong>Selection Sort</strong></p>
 <p>This way of sorting is simplest to imagine. We tend to utilize the principle of selection sort in our day-to-day lives. Assume that we wish to sort a series of values in ascending order. Intuitvely, we will first traverse through an array an select the smallest element and keep it aside. From the remaining elements in the array we will again repeat the steps to find and keep the smallest element aside. </p>
+<br>
 <p><strong>Example of Selection Sort:</strong></p>
 <p>Conside the following array consisting of 6 elements: [23, 4, 56, 1, 78, 2]</p>
 <ul>
@@ -777,11 +778,13 @@ Bubble sort is a simple sorting algorithm that repeatedly iterates through an ar
 </code></pre>
 <hr>
 <p><strong>Insertion Sort</strong></p>
-Insertion sort works similar to the way people sort playing cards in their hands. To sort an array of size n in ascending order: 
-1: Iterate from arr[1] to arr[n] over the array. 
-2: Compare the current element (key) to its predecessor (element at the previous index). 
-3: If the key element is smaller than its predecessor, compare it to the elements before. Move the greater elements one position up to make space for the swapped element.
+Insertion sort works similar to the way people sort playing cards in their hands. To sort an array of size n in ascending order:
+<li>Step 1: Iterate from arr[1] to arr[n] over the array.</li>
+<li>Step 2: Compare the current element (key) to its predecessor (element at the previous index).</li>
+<li>Step 3: If the key element is smaller than its predecessor, compare it to the elements before. Move the greater elements one position up to make space for the swapped element. </li>
+<li>Step 4: Repeat until the iteration reaches the last index of the array.</li>
 
+<br>
 <p><strong>Example of Insertion Sort and Flowchart:</strong></p>
 <div class="row">
   <div class="column">
@@ -792,12 +795,12 @@ Insertion sort works similar to the way people sort playing cards in their hands
   </div>
 </div>
 
-<p>Link to animation for bubble sort - <a href="https://yongdanielliang.github.io/animation/web/InsertionSortNew.html">https://yongdanielliang.github.io/animation/web/InsertionSortNew.html</a></p>
+<p>Link to animation for insertion sort - <a href="https://yongdanielliang.github.io/animation/web/InsertionSortNew.html">https://yongdanielliang.github.io/animation/web/InsertionSortNew.html</a></p>
 
 <pre class="cm-s-default CodeMirror"><code>
   void insertionSort(int arr[], int n){
 	int key = 0;
-    int j = 0;
+    	int j = 0;
 	for (int i = 1; i < n; i++) {
 	   key = arr[i];
 	   j = i - 1;
