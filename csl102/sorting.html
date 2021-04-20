@@ -696,6 +696,20 @@ hr {
   border-color: rgba(255,255,255,0.3);
   color: #36abe3;
 }
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}  
+  
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
 </head>
