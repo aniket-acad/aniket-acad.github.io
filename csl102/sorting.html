@@ -750,8 +750,9 @@ hr {
   
 <hr>
 <p><strong>Bubble Sort</strong></p>
-Bubble sort is a simple sorting algorithm that repeatedly iterates through an array, compares adjacent elements and swaps them if they are in the wrong order (assume ascending). The iteration through the array is repeated until the array is sorted. 
+Bubble sort is a simple sorting algorithm that repeatedly iterates through an array, compares adjacent elements and swaps them if they are in the wrong order (assume ascending). The iteration through the array is repeated until the array is sorted.  
 
+<p><strong>Example of Bubble Sort and Flowchart:</strong></p>
 <div class="row">
   <div class="column">
     <img src="images/7f759078-231f-4122-8243-0f2677c64b46.png">
@@ -760,6 +761,20 @@ Bubble sort is a simple sorting algorithm that repeatedly iterates through an ar
     <img src="images/fe53c8b9-bd45-4b5d-88c1-a8a8cfe942ce.svg">
   </div>
 </div>
+
+<p>Link to animation for bubble sort - <a href="https://yongdanielliang.github.io/animation/web/BubbleSortNew.html">https://yongdanielliang.github.io/animation/web/BubbleSortNew.html</a></p>
+
+<pre class="cm-s-default CodeMirror"><code>
+  void bubbleSort(int arr[], int n){
+    for (int i = 0; i < n-1; i++){	
+	    for (int j = 0; j < n-i-1; j++){
+		    if (arr[j] > arr[j+1]){
+			    swap(&arr[j], &arr[j+1]);
+            }
+        }
+    }
+  }
+</code></pre>
 
 <hr>
 <br>
