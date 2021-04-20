@@ -775,7 +775,41 @@ Bubble sort is a simple sorting algorithm that repeatedly iterates through an ar
     }
   }
 </code></pre>
+<hr>
+<p><strong>Insertion Sort</strong></p>
+Insertion sort works similar to the way people sort playing cards in their hands. To sort an array of size n in ascending order: 
+1: Iterate from arr[1] to arr[n] over the array. 
+2: Compare the current element (key) to its predecessor (element at the previous index). 
+3: If the key element is smaller than its predecessor, compare it to the elements before. Move the greater elements one position up to make space for the swapped element.
 
+<p><strong>Example of Insertion Sort and Flowchart:</strong></p>
+<div class="row">
+  <div class="column">
+    <img src="images/608ad123-b753-4fc2-9929-285cb0660ada.png">
+  </div>
+  <div class="column">
+    <img src="images/937c6459-c1cb-4d70-9ccc-b1b451331acd.svg">
+  </div>
+</div>
+
+<p>Link to animation for bubble sort - <a href="https://yongdanielliang.github.io/animation/web/InsertionSortNew.html">https://yongdanielliang.github.io/animation/web/InsertionSortNew.html</a></p>
+
+<pre class="cm-s-default CodeMirror"><code>
+  void insertionSort(int arr[], int n){
+	int key = 0;
+    int j = 0;
+	for (int i = 1; i < n; i++) {
+	   key = arr[i];
+	   j = i - 1;
+
+	   while (j >= 0 && arr[j] > key) {
+		arr[j + 1] = arr[j];
+		j = j - 1;
+	   }
+	   arr[j + 1] = key;
+	}
+   }
+</code></pre>
 <hr>
 <br>
 <a href="../csl102.html">HOME</a>&nbsp;&nbsp;&nbsp;<a href="searching.html">PREV</a>&nbsp;&nbsp;&nbsp;<a href="sorting.html">NEXT</a>  
