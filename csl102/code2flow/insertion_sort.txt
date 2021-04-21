@@ -1,0 +1,25 @@
+// Flowchart for Insertion Sort
+START;
+Read the array 'arr' and its length 'n';
+Set i = 0, key = 0, j = 0; 
+if_i_lt_n:
+// for (i = 0; i < n; i++)
+if(i < n-1) {
+  key = arr[i];
+  j = i - 1;
+  while_loop:
+  // while (j >= 0 && arr[j] > key) 
+  if(j >= 0){
+    if(arr[j] > key){
+      arr[j + 1] = arr[j];
+      j = j - 1;
+      goto while_loop; 
+    }
+  }
+  arr[j + 1] = key;
+  // i++ in for loop
+  i++;
+  goto if_i_lt_n;
+}
+Print the sorted array;
+END;

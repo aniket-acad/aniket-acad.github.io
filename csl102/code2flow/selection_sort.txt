@@ -1,0 +1,27 @@
+// Flowchart for Selection Sort
+START;
+Read the array 'arr' and its length 'n';
+Set i = 0; 
+if_i_lt_n-1:
+// for (i = 0; i < n-1; i++)
+if(i < n-1) {
+  Set minIdx = i;
+  Set j = i + 1;
+  if_j_lt_n:
+  // for (j = i+1; j < n; j++)
+  if(j < n){
+    if(arr[j] < arr[minIdx]){
+      minIdx = j;
+      j++;
+      goto if_j_lt_n; 
+    }
+    //swap values
+  }
+  swap(&arr[minIdx], &arr[i]);
+  i++;
+  goto if_i_lt_n-1;
+}
+
+
+Print the sorted array;
+END;

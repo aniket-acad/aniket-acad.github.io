@@ -1,0 +1,23 @@
+// Flowchart for Bubble Sort
+START;
+Read the array 'arr' and its length 'n';
+Set i = 0, j = 0; 
+if_i_lt_n-1:
+// for (i = 0; i < n-1; i++)
+if(i < n-1) {
+  if_j_lt_n-i-1:
+  // for (j = 0; j < n-i-1; j++) 
+  if(j < n-i-1){
+    if(arr[j] > arr[j+1]){
+      j++;
+      //swap values
+      swap(&arr[j], &arr[j+1]);
+      goto if_j_lt_n-i-1; 
+    }
+  }
+  // i++ in for loop
+  i++;
+  goto if_i_lt_n-1;
+}
+Print the sorted array;
+END;
