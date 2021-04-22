@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -815,6 +816,98 @@ Insertion sort works similar to the way people sort playing cards in their hands
    }
 </code></pre>
 <hr>
+<p><strong>Merge Sort</strong></p>
+<p>The aforesaid sorting techniques require nearly <em>n<sup>2</sup></em> number of steps for input size <em>n</em>. Merge Sort technique is comparitvely more efficient. Similar to Binary Search it is a Divide and Conquer algorithm. To this end, it divides the input array into two halves. Each half is sorted by recursively dividing them individually into two halves. Once the entire array is divided into subarrays of size 1, they are merged into two sorted (ascensding) halves. Described below is the algorithm for merge sort technique.</p>
+<p>merge_sort(arr[], left_index,  right_index)<br><br>
+If right_index > left_index  
+<ul>
+  <li>Step 1: Find the middle point to divide the array into two halves:</li>  
+  &nbsp;&nbsp;&nbsp;&nbsp; middle_index = (left_index + right_index)/2
+  <li>Step 2: Call merge_sort for first half:</li>   
+  &nbsp;&nbsp;&nbsp;&nbsp; Call merge_sort(arr, left_index, middle_index)
+  <li>Step 3: Call merge_sort for second half:</li>
+  &nbsp;&nbsp;&nbsp;&nbsp; Call merge_sort(arr, middle_index + 1, right_index)
+  <li>Step 4: Merge the two halves sorted in step 2 and 3:</li>
+  &nbsp;&nbsp;&nbsp;&nbsp; Call merge(arr, left_index, middle_index, right_index)
+</ul>
+<img src="images/38bdef27-dff4-40c1-a9af-76fe1e7477c8.png">
+Image source: https://levelup.gitconnected.com/
+</p>
+<p>
+The number of steps required for merge sort for input size <em>n</em> is:
+<ul>
+  <li>Recursive splitting of array: <em>log<sub>2</sub>(n)</em></li>
+  <li>Merging of sorted arrays: <em>log<sub>2</sub>(n)</em></li>
+  <li>Comparison of values at every step: <em>n</em></li>
+  <li>Total steps = <em>log<sub>2</sub>(n)</em> + <em>log<sub>2</sub>(n)</em> * <em>n</em> = <em>nlog<sub>2</sub>(n)</em></li>
+</ul>
+</p>
+
+<pre class="cm-s-default CodeMirror"><code>
+  void merge(int arr[], int left_index, int middle_index, int right_index)
+  {
+    int sz_left_arr = middle_index - left_index + 1;
+    int sz_right_arr = right_index - middle_index;
+  
+    /* create temporary arrays */
+    int left_arr[sz_left_arr], right_arr[sz_right_arr];
+  
+    /* Copy data to left_arr[] and right_arr[] */
+    for (int i = 0; i < sz_left_arr; i++)
+      left_arr[i] = arr[left_index + i];
+  
+    for (int j = 0; j < sz_right_arr; j++)
+      right_arr[j] = arr[middle_index + 1 + j];
+  
+    int i, j, k;
+    /* Merge the temp arrays back into arr[l..r]*/
+    i = 0; /* starting index of left_arr */
+    j = 0; /* starting index of right_arr */
+    k = left_index; /* starting index of merged subarray */
+    while (i < sz_left_arr && j < sz_right_arr) {
+      if (left_arr[i] <= right_arr[j]) {
+        arr[k] = left_arr[i];
+        i++;
+      }
+      else {
+        arr[k] = right_arr[j];
+        j++;
+      }
+      k++;
+    }
+  
+    /* Copy the remaining elements of left_arr[], if there
+    are any */
+    while (i < sz_left_arr) {
+      arr[k] = left_arr[i];
+      i++;
+      k++;
+    }
+  
+    /* Copy the remaining elements of right_arr[], if there
+    are any */
+    while (j < sz_right_arr) {
+      arr[k] = right_arr[j];
+      j++;
+      k++;
+    }
+  }
+  
+  void merge_sort_func(int arr[], int left_index, int right_index)
+  {
+    if (left_index < right_index) {
+      int middle_index = (left_index + right_index) / 2;
+  
+      /*recursively sort first and second halves*/
+      merge_sort_func(arr, left_index, middle_index);
+      merge_sort_func(arr, middle_index + 1, right_index);
+  
+      merge(arr, left_index, middle_index, right_index);
+    }
+  } 
+</code></pre>
+
+
 <br>
 <a href="../csl102.html">HOME</a>&nbsp;&nbsp;&nbsp;<a href="searching.html">PREV</a>&nbsp;&nbsp;&nbsp;<a href="sorting.html">NEXT</a>  
 <br><br>
