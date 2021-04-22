@@ -830,9 +830,10 @@ If right_index > left_index
   <li>Step 4: Merge the two halves sorted in step 2 and 3:</li>
   &nbsp;&nbsp;&nbsp;&nbsp; Call merge(arr, left_index, middle_index, right_index)
 </ul>
+</p>
 <img src="images/38bdef27-dff4-40c1-a9af-76fe1e7477c8.png">
 Image source: https://levelup.gitconnected.com/
-</p>
+<br><br>
 <p>
 The number of steps required for merge sort for input size <em>n</em> is:
 <ul>
@@ -842,8 +843,9 @@ The number of steps required for merge sort for input size <em>n</em> is:
   <li>Total steps = <em>log<sub>2</sub>(n)</em> + <em>log<sub>2</sub>(n)</em> * <em>n</em> = <em>nlog<sub>2</sub>(n)</em></li>
 </ul>
 </p>
-<p>Link to animation for insertion sort - <a href="https://www.hackerearth.com/practice/algorithms/sorting/merge-sort/visualize/">https://www.hackerearth.com/practice/algorithms/sorting/merge-sort/visualize/</a></p>
-	
+
+<p>Link to animation for Merge sort - <a href="https://www.hackerearth.com/practice/algorithms/sorting/merge-sort/visualize/">Link to hackerearth</a>.</p>
+
 <pre class="cm-s-default CodeMirror"><code>
   void merge(int arr[], int left_index, int middle_index, int right_index)
   {
@@ -907,9 +909,63 @@ The number of steps required for merge sort for input size <em>n</em> is:
     }
   } 
 </code></pre>
+<hr>
+<p><strong>Quick Sort</strong></p>
+<p>Similar to the Merge Sort technique, Quick Sort employs the Divide and Conquer algorithm. To this end, it picks an element as pivot and partitions the given array around the picked pivot. Each partition is then recursively processed by further partitioning (into subpartitions) around a newly selected pivot (from the partition). The left subpartition will have elements smaller than the pivot. The right subpartition will have elements greater than the pivot.</p>
+<p>The pivot can be selected in multiple ways:
+  <ol>
+    <li>Pick first element</li>
+    <li>Pick last element (avoids 1 extra swap)</li>
+    <li>Pick a random element</li>
+    <li>Pick median element</li>
+  </ol>
+</p>
 
+<img src="images/d45e28c1-0601-45e9-88e5-644f5600f856.jpeg" width="60%" height="60%">
+Image source: https://stackabuse.com/quicksort-in-javascript/
 
+<br><br>
+
+<p>Link to animation for Quick sort - <a href="https://www.hackerearth.com/practice/algorithms/sorting/quick-sort/visualize/">Link to hackerearth</a>.</p>
+
+<pre class="cm-s-default CodeMirror"><code></code>
+int partition (int arr[], int left_index, int right_index){
+  int pivot = arr[right_index];
+int pivot_index = right_index;
+right_index--; /*pivot exists at the right index*/
+
+while(left_index <= right_index){
+  if(arr[left_index] < pivot){
+    left_index++;
+    continue;
+  }
+  else if(arr[right_index] > pivot){
+    right_index--;
+    continue;
+  }
+  else{
+    swap(&arr[left_index], &arr[right_index]);
+  }
+}
+
+/*Now the left index point to location where pivot must go*/
+swap(&arr[left_index], &arr[pivot_index]);
+return left_index;
+}
+
+void quick_sort_func(int arr[], int left_index, int right_index)
+{
+if (left_index < right_index) {
+  int partition_index = partition(arr, left_index, right_index);
+
+  /*recursively sort first and second halves*/
+  quick_sort_func(arr, left_index, partition_index - 1);
+  quick_sort_func(arr, partition_index + 1, right_index);
+}
+}
+</code></pre>
 <br>
+<hr>
 <a href="../csl102.html">HOME</a>&nbsp;&nbsp;&nbsp;<a href="searching.html">PREV</a>&nbsp;&nbsp;&nbsp;<a href="sorting.html">NEXT</a>  
 <br><br>
 <div id="colorstrip"/>
