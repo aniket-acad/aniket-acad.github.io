@@ -927,6 +927,21 @@ Image source: https://stackabuse.com/quicksort-in-javascript/
 <br><br>
 
 <p>Link to animation for Quick sort - <a href="https://www.hackerearth.com/practice/algorithms/sorting/quick-sort/visualize/">Link to hackerearth</a>.</p>
+	
+Described below is the algorithm for quick sort technique.</p>
+<p>quick_sort(arr[], left_index,  right_index)<br><br>
+If right_index > left_index  
+<ul>
+  <li>Step 1: Select an element as pivot using strategy of choice</li>
+  &nbsp;&nbsp;&nbsp;&nbsp; pivot = arr[right_index]; // rightmost element selected as pivot.
+  <li>Step 2: Call partition function to creat two subpartitions and get the partition index</li>
+  &nbsp;&nbsp;&nbsp;&nbsp; partition_index = partition(arr, left_index, right_index)
+  <li>Step 3: Call quick_sort for first half:</li>   
+  &nbsp;&nbsp;&nbsp;&nbsp; Call quick_sort(arr, left_index, partition_index - 1)
+  <li>Step 4: Call quick_sort for second half:</li>
+  &nbsp;&nbsp;&nbsp;&nbsp; Call quick_sort(arr, partition_index + 1, right_index)
+</ul>
+</p>
 
 <pre class="cm-s-default CodeMirror"><code></code>
 int partition (int arr[], int left_index, int right_index){
