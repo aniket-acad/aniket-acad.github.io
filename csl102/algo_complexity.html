@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>algo_complexity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta keywords="">
+<style>
+
+.CodeMirror {
+  height: inherit;
+}
+
+.doc-embed {
+  padding: 0;
+  border: 1px solid #D2D3D6;
+  border-radius: 3px;
+  margin-bottom: 8px;
+
+  color: #45474B;
+
+  .doc-embed-wrapper {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
+  }
+
+  .collapse-trigger {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 4px;
+    padding-left: 4px;
+    cursor: pointer;
+    overflow: hidden;
+
+    .threadline {
+      flex: 1 1 auto;
+      width: 1px;
+      background: #EDEDEE;
+      transition: 0.2s
+      display: block;
+      margin: auto;
+    }
+
+    &:hover .threadline {
+      width: 1px;
+      background: #2C2D30
+    }
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    fill: currentColor;
+  }
+
+  &.collapsed {
+    .collapse-trigger  {
+      .threadline {
+        display: none;
+      }
+      svg {
+        transform: rotate(-90deg);
+      }
+    }
+    .doc-embed-content {
+      display: none;
+    }
+  }
+
+  .embed-body {
+    min-width: 0;
+  }
+
+  .doc-embed-header {
+    display: flex;
+    align-items: center;
+
+    & > div {
+      flex: 1;
+      min-width: 0;
+      padding: 8px 16px 8px 4px;
+    }
+
+    h1, a {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      display: block;
+    }
+
+    a > svg {
+      margin-right: 5px;
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+  }
+
+  .doc-embed-content {
+    padding: 0 16px;
+  }
+}
+
+-ms-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
+line-height: 1.6;
+font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+  sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+font-size: 15px;
+line-height: 1.6;
+word-wrap: break-word;
+
+.dark, .solarizedDark {
+  color: #FFF;
+}
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+a {
+  background-color: transparent;
+}
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+img {
+  border-style: none;
+}
+
+code,
+kbd,
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+input {
+  font: inherit;
+  margin: 0;
+}
+
+input {
+  overflow: visible;
+}
+
+[type='checkbox'] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: 600;
+}
+
+hr {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+hr:before {
+  content: '';
+  display: table;
+}
+
+hr:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+details summary {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h3,
+h4 {
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h5,
+h6 {
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 12px;
+}
+
+p {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+blockquote {
+  margin: 0;
+}
+
+ol,
+ul {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+ol ol,
+ul ol {
+  list-style-type: lower-roman;
+}
+
+ol ol ol,
+ol ul ol,
+ul ol ol,
+ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+dd {
+  margin-left: 0;
+}
+
+code,
+pre {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+    monospace;
+  font-size: 12px;
+}
+
+pre.CodeMirror,
+code.CodeMirror {
+  height: auto;
+}
+
+pre {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+&:before {
+  content: '';
+  display: table;
+}
+
+&:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+> :first-child {
+  margin-top: 0 !important;
+}
+
+> :last-child {
+  margin-bottom: 0 !important;
+}
+
+a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+blockquote,
+dl,
+ol,
+p,
+pre,
+table,
+ul {
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+hr {
+  background-color: #e1e4e8;
+  border: 0;
+  height: 1px;
+  margin: 16px 0;
+  padding: 0;
+}
+
+blockquote {
+  border-left: 0.25em solid #e1e4e8;
+  color: #999999;
+  padding: 0 1em;
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+kbd {
+  background-color: #fafbfc;
+  border: 1px solid #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+  color: #444d56;
+  display: inline-block;
+  font-size: 11px;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin: 8px 0;
+}
+
+h1 {
+  margin-top: 32px;
+  font-weight: 600;
+  font-size: 1.953em;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 1.5em;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 1.25em;
+}
+
+h4 {
+  font-weight: 400;
+  font-size: 1em;
+}
+
+h5 {
+  font-weight: 400;
+  font-size: 0.875em;
+}
+
+h6 {
+  font-weight: 400;
+  color: #6a737d;
+  font-size: 0.85em;
+}
+
+ol,
+ul {
+  padding-left: 2em;
+}
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+li {
+  word-wrap: break-all;
+}
+
+li > p {
+  margin-top: 16px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+li + li {
+  margin-top: 0.25em;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 16px;
+  padding: 0;
+}
+
+dl dd {
+  margin-bottom: 16px;
+  padding: 0 16px;
+}
+
+table {
+  display: block;
+  overflow: auto;
+  width: 100%;
+}
+
+table th {
+  font-weight: 600;
+}
+
+table td,
+table th {
+  border: 1px solid #dfe2e5;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #c6cbd1;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 15px 0;
+  box-sizing: content-box;
+}
+
+img[align='right'] {
+  padding-left: 20px;
+}
+
+img[align='left'] {
+  padding-right: 20px;
+}
+
+code {
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+  font-size: 85%;
+  margin: 0;
+  padding: 0.2em 0.4em;
+}
+
+p code,
+li code
+{
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+pre {
+  word-wrap: normal;
+}
+
+pre > code {
+  background: transparent;
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  word-break: normal;
+}
+
+.highlight {
+  margin-bottom: 16px;
+}
+
+.highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.highlight pre,
+pre {
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font-size: 85%;
+  line-height: 1.45;
+  overflow: auto;
+  padding: 16px;
+}
+
+pre code {
+  background-color: transparent;
+  border: 0;
+  display: inline;
+  line-height: inherit;
+  margin: 0;
+  max-width: auto;
+  overflow: visible;
+  padding: 0;
+  word-wrap: normal;
+}
+
+kbd {
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+  color: #444d56;
+  display: inline-block;
+  font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+    monospace;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+:checked + .radio-label {
+  border-color: #0366d6;
+  position: relative;
+  z-index: 1;
+}
+
+.task-list-item {
+  position: relative;
+  list-style-type: none;
+  height: fit-content;
+  min-height: 25px;
+}
+
+.task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+
+.task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+.task-list-item input[type=checkbox] {
+  position: absolute;
+  top: 6px;
+}
+
+hr {
+  border-bottom-color: #eee;
+}
+
+.dark p code,
+.dark li code
+{
+  background-color: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.3);
+  color: #5580DC;
+}
+
+.auto p code,
+.auto li code
+{
+  background-color: #F9F9F9;
+  border-color: rgba(0,0,0,0.26);
+  color: #5580DC;
+}
+
+.light p code,
+.light li code
+{
+  background-color: #F9F9F9;
+  border-color: rgba(0,0,0,0.26);
+  color: #5580DC;
+}
+
+.sepia p code,
+.sepia li code
+{
+  background-color: #efe8d6;
+  border-color: rgba(0,0,0,0.26);
+  color: #F77942;
+}
+
+.solarizedDark p code,
+.solarizedDark li code
+{
+  background-color: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.3);
+  color: #36abe3;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}  
+
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+</head>
+<body>
+<h3>Time and Space complexity</h3>
+<p>CSL 102; Data Structures; IIIT Nagpur; Created by: Dr. Aniket Pingley</p>
+<p>In general, many ways could exist to solve a problem . We tend to choose the best of all options available. For example, mutliple ways to reach a destination may exist, but navigation applications will provide the best route either in terms of distance or time. To find the best option, a mechanism for comparitive analysis must be available to evaluate the available options. Similarly, in computer science we must learn to compare the performance of different algorithms and choose the best one to solve a particular problem. </p>
+<p>The field of computer science uses two mechanisms for comparison:</p>
+<ul>
+<li><strong>Time complexity</strong><ul>
+<li>describes the amount of (computer) time it takes to run an algorithm</li>
+</ul></li>
+<li><strong>Space complexity</strong><ul>
+<li>amount of memory space required by an algorithm</li>
+</ul></li>
+</ul>
+<p>It will be thus natural to think of time complexity in terms of milliseconds/seconds etc. and space complexity it terms of kb/mb etc. However, measuring the performance of algorithms in the aforesaid terms has a fundamental pitfall. One can argue that with the use of better hardware the performance of an algorithm can improve, which is true to some extent. However, multiple software applications share the hardware for their execution. Thus, the performance of even the best algorithm for a given problem might get limited due to other applications. In addition, the input size for an algorithm could be very large and could become exponentially larger as more data becomes available. In contrast, increasing the hardware capacity to according to the size of input data is limited by the cost of hardware that could become prohibitively expensive. </p>
+<p>Thus, the performance of algorithm, i.e. time and space complexity, is expressed in terms of the input size. In addition, we are interested in understanding how the performance of the algorithm changes as the input size grows. To this end, time and space complexity represent <strong><em>asymptotic behavior</em></strong> of an algorithm, i.e. the limiting behavior of algorithm in context of the input size. </p>
+<p>Mathematically speaking, an algorithm can be expressed as a function of input size. For example, to read an array of <strong><em>N</em></strong> elements, a <strong><em>for loop</em></strong> performs <strong><em>N</em></strong> iterations. Thus a <strong><em>for loop</em></strong> can be expressed as <strong><em>f(N)</em></strong>, where <strong><em>f(N) = N</em></strong>. Likewise sorting algorithms like bubble, selection and insertion that have nested <strong><em>for loops</em></strong> will be expressed as <strong><em>f(N)</em></strong>, where <strong><em>f(N) = N2</em></strong>. One may argue that additional computation is needed in assigning values to variable and that must be taken into account. As an illustration, if an algorithm is expressed as <strong><em>f(N) = N3 + 10N + 5</em></strong>, then as <strong><em>N</em></strong> becomes very large, the term <strong><em>10N + 5</em></strong>  becomes insignificant compared to <em><strong>N3</strong></em>. The function <strong><em>f(N)</em></strong> is said to be asymptotically equivalent  to <strong><em>N3</em></strong>, as <strong><em>N → ∞</em></strong>. Thus expressing <strong><em>f(N) ~ N3</em></strong> suffices to explain the order of growth of an algorithm with respect to the input size <em><strong>N</strong></em>.</p>
+<hr>
+<p><strong>Notations</strong></p>
+<p>(Some parts in this section are borrowed from <a href="https://www.hackerearth.com/">https://www.hackerearth.com/</a>) </p>
+<p>As stated above, we are interested in the order of growth of time and space in context of the input size. In other words, we are interested in the more significant parts of the algorithms where time and space gets consumed. If an algorithm is expressed in terms of mathematical functions, the terms having higher orders are more significant and thus of our interest. Thus, complexity is expressed in terms of (asymptotic) upper and lower bounds. Following notations will make it clear.  </p>
+<ul>
+<li><p><strong>O-notation or the Big O notation:</strong><br />
+  Big O notation is used to denote asymptotic upper bound. For a given function g(n), we denote by O(g(n)) the set of functions:<br />
+  O(g(n)) = { f(n) : there exist positive constants c and n<sub>0</sub> such that 0 &le; f (n) &le; c * g(n) for all n &ge; n<sub>0</sub> }</p></li>
+<li><p><strong>&#937;-notation or Big Omega notation:</strong><br
+  />
+ &#937;-notation is used to denote asymptotic lower bound. For a given function g(n), we denote by &#937;(g(n)) the set of functions:<br />
+ &#937;(g(n)) = { f(n) : there exist positive constants c and n<sub>0</sub> such that 0 &le; c * g(n) &le; f(n) for all n &ge; n<sub>0</sub> }</p></li>
+<li><p><strong>&#920;-notation or Big Theta notation:</strong><br
+  />
+ &#920;-notation is to denote asymptotic tight bound. For a given function g(n), we denote by &#920;(g(n)) the set of functions:<br />
+ &#920;(g(n)) = { f(n) : there exist positive constants c<sub>1</sub>, c<sub>2</sub> and n<sub>0</sub> such that 0 &le; c<sub>1</sub> * g(n) &le; f (n) &le; c<sub>2</sub> * g(n) for all n &gt; n<sub>0</sub> }</p></li>
+</ul>
+
+<br>
+<p><strong>Comparison of three notations:</strong></p>
+Source: https://www.programiz.com/
+<div class="row">
+  <div class="column">
+    <img src="images/d40c252a-4f5f-48f1-a070-f78cc7a46dee_big0.png">
+  </div>
+  <div class="column">
+    <img src="images/7790f29c-06e6-49b4-b4f5-ab9094d9df9f_omega.png">
+  </div>
+  <div class="column">
+    <img src="images/5c586097-50fa-4c34-bd58-3e93c9869342_theta.png">
+  </div>
+</div>
+
+Refer <a href="https://www.bigocheatsheet.com/ ">https://www.bigocheatsheet.com/ </a> for more information.
+
+<hr>
+<p><strong>Space Complexity</strong></p>
+<p>Much of the focus of discussion about algorithmic complexity revolves around time complexity. Space complexity amount of memory space required by an algorithm in its execution cycle. Space needed by an algorithm is equal to the sum of the following two components:</p>
+<ul>
+<li><strong><em>Fixed part</em></strong>: space required to store data and variables that are not dependent of the size of the input.</li>
+<li><strong><em>Variable part</em></strong>: space required by variables, whose size is dependent on the size of the problem. </li>
+</ul>
+<p>As you might have guessed by now, we are interested in the variable part of the data space consumption. The variable space is of two types:</p>
+
+<ul>
+  <li><strong><em>Auxiliary space</em></strong>: extra space or temporary space used by an algorithm.</li>
+  <li><strong><em>Input space</em></strong>: space required by the input data.</li>
+</ul>
+
+<p>Space complexity usually expressed using big O-notation.</p>
+<hr>
+
+<a href="../csl102.html">HOME</a>&nbsp;&nbsp;&nbsp;<a href="sorting.html">PREV</a>&nbsp;&nbsp;&nbsp;<a href="../csl102.html">NEXT</a>  
+<br><br>
+<div id="colorstrip"/>
+<br>
+<br>
+<br>   
+
+</body>
+</html>
