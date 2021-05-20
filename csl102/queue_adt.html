@@ -696,15 +696,31 @@ hr {
   border-color: rgba(255,255,255,0.3);
   color: #36abe3;
 }
+  
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}    
+  
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
 </head>
 <body>
-<h3>Stack Data Structure</h3>
+<h3>Queue Data Structure</h3>
 <p>CSL 102; Data Structures; IIIT Nagpur; Created by: Dr. Aniket Pingley</p>
 <p><strong>Introduction</strong>
 
 Similar to the Stack ADT, a Queue is also a linear data structure. However, unlinke Stack, which follows LIFO order, the Queue ADT First In First Out (FIFO) order for data-operations, i.e., the data item stored first will be accessed first. In addition, unlike Stack, Queue supports insertion and removal/deletion operations at two different ends of the data structure. The insertion operation is performed at a position known as 'back', 'rear' or 'tail', and the deletion operation is performed at 'front' or 'head' of the data structure. The insertion operation is also referred as 'enqueue' and the removal operation as 'dequeue'.  </p>
+
+<img src="images/47800198-9a65-4fc3-8c47-4cf82396823e_queue_adt.png">   
 <p>Image source: <a href="http://www.btechsmartclass.com/">http://www.btechsmartclass.com/</a></p>
 <hr>
 <p><strong>Basic Operations</strong></p>
@@ -722,6 +738,8 @@ Similar to the Stack ADT, a Queue is also a linear data structure. However, unli
 <hr>
 <p><strong>Circular Queue</strong></p>
 <p>A severe limitation in the array-based implementation of Queue is encountered when the multiple dequeue operations results vacant spaces are in the beginning, which cannot be utilized since enqueue operation occurs at the 'back'. To overcome such limitations, the concept of the circular queue was introduced. Circular Queue is a linear data structure in which the operations are performed based on First In First Out (FIFO) order for data-operations. However, the indices of of the underlying array are reused once the enqueue operations causes the 'back' of the Queue to reach its maximum size. Pictographically, last position in the array is connected back to the first position to make a circle. It is also called ‘Ring Buffer’. </p>
+  
+<img src="images/8-6bbd-49e9-af31-0bfeb72796dc_circularq.png" width="60%" height="60%">    
 <p>Image source: <a href="https://prepinsta.com/data-structures-algorithms/circular-queue/">https://prepinsta.com/data-structures-algorithms/circular-queue/</a></p>
 <hr>
 <p><strong>Implementation of Queue ADT</strong></p>
@@ -729,5 +747,12 @@ Similar to the Stack ADT, a Queue is also a linear data structure. However, unli
 <li>Link to header file - <a href="https://raw.githubusercontent.com/aniket-acad/csl102_ds_iiitn/main/adt/queue.h">HERE</a></li>
 <li>Link to implementation - <a href="https://raw.githubusercontent.com/aniket-acad/csl102_ds_iiitn/main/adt/circularq.c">HERE</a></li>
 </ul>
+  <hr>
+<a href="../csl102.html">HOME</a>&nbsp;&nbsp;&nbsp;<a href="stack_adt.html">PREV</a>&nbsp;&nbsp;&nbsp;<a href="queue_adt.html">NEXT</a>  
+<br><br>
+<div id="colorstrip"/>
+<br>
+<br>
+<br>   
 </body>
 </html>
